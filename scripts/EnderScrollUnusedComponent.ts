@@ -1,4 +1,5 @@
 import { EntityComponentTypes, ItemComponentUseEvent, ItemCustomComponent, ItemStack } from "@minecraft/server";
+import { formatVector3 } from "./utils";
 
 export class EnderScrollUnusedComponent implements ItemCustomComponent {
   onUse(event: ItemComponentUseEvent): void {
@@ -11,10 +12,9 @@ export class EnderScrollUnusedComponent implements ItemCustomComponent {
       dim: player.dimension.id,
     });
 
-    convertedTo.setLore([
-      `§7Teleports you to location ${player.location.x}, ${player.location.y}, ${player.location.z} when used.`,
-    ]);
+    convertedTo.setLore([`§7Teleports you to location §6${formatVector3(player.location)} §7when used.`]);
 
+    player.playSound("beacon.activate");
     player.getComponent(EntityComponentTypes.Inventory)?.container.setItem(player.selectedSlotIndex, convertedTo);
   }
 }

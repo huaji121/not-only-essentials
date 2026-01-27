@@ -15,6 +15,10 @@
     },
     "noe:ender_scroll": {
       "textures": "textures/items/ender_scroll"
+    },
+
+    "noe:ender_book": {
+      "textures": "textures/items/ender_book"
     }
   }
 }
