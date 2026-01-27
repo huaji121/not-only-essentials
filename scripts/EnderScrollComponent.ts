@@ -21,16 +21,15 @@ export class EnderScrollComponent implements ItemCustomComponent {
     } satisfies Vector3;
     const dim = world.getDimension(<string>item?.getDynamicProperty("dim") ?? "overworld");
 
-    // system.run(() => player.runCommand("playsound beacon.deactivate"));
-
     player.teleport(pos, { dimension: dim });
 
     player
       .getComponent(EntityComponentTypes.Inventory)
       ?.container.setItem(player.selectedSlotIndex, new ItemStack(MinecraftItemTypes.Paper, 1));
 
-    // 我声音呢？？等待修复
-    // system.run(() => player.runCommand("playsound beacon.deactivate"));
-    // player.playSound("beacon.deactivate");
+    // 我声音呢？？这种方式有声了，sb微软
+    system.runTimeout(() => {
+      dim.playSound("beacon.deactivate", player.location);
+    }, 1);
   }
 }

@@ -12,9 +12,9 @@ export class EnderScrollUnusedComponent implements ItemCustomComponent {
       dim: player.dimension.id,
     });
 
-    convertedTo.setLore([`§7Teleports you to location §6${formatVector3(player.location)} §7when used.`]);
+    convertedTo.setLore([`§aTeleports you to location §6${formatVector3(player.location)} §awhen used.`]);
 
-    player.playSound("beacon.activate");
+    player.dimension.playSound("beacon.activate", player.location);
     player.getComponent(EntityComponentTypes.Inventory)?.container.setItem(player.selectedSlotIndex, convertedTo);
   }
 }
