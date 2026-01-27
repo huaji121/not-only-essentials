@@ -1,5 +1,6 @@
 import { system, world } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
+import "./register-components";
 
 world.afterEvents.chatSend.subscribe((event) => {
   world.sendMessage(`You said: ${event.message}`);

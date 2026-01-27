@@ -18,7 +18,9 @@
 
       "minecraft:display_name": {
         "value": "Ender Scroll"
-      }
+      },
+
+      "noe:ender_scroll": {}
     }
   }
 }
