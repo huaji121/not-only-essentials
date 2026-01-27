@@ -1,0 +1,20 @@
+{
+  "resource_pack_name": "Not Only Essentials",
+  "texture_data": {
+    "noe:goo": {
+      "textures": "textures/items/goo"
+    },
+    "noe:ender_dust": {
+      "textures": "textures/items/ender_dust"
+    },
+    "noe:mundane_paper": {
+      "textures": "textures/items/mundane_paper"
+    },
+    "noe:ender_scroll_unused": {
+      "textures": "textures/items/ender_scroll_unused"
+    },
+    "noe:ender_scroll": {
+      "textures": "textures/items/ender_scroll"
+    }
+  }
+}

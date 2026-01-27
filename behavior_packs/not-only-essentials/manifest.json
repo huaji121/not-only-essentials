@@ -1,9 +1,9 @@
 {
   "format_version": 2,
   "header": {
-    "name": "My script behavior pack",
-    "description": "My behavior pack description",
-    "uuid": "14e467b4-e3aa-49d3-8352-f8439fd7b2ee",
+    "name": "not-only-essentials",
+    "description": "not-only-essentials is a add-on that adds various useful features to Minecraft.",
+    "uuid": "019bb512-0be5-4f0d-9594-87f9f22e60ee",
     "version": [1, 0, 0],
     "min_engine_version": [1, 20, 30]
   },
@@ -12,7 +12,7 @@
       "description": "Script resources",
       "language": "javascript",
       "type": "script",
-      "uuid": "7c7e693f-99f4-41a9-95e0-1f57b37e1e12",
+      "uuid": "7b6c38dd-cb4c-474e-8043-095e4a1feaf4",
       "version": [1, 0, 0],
       "entry": "scripts/main.js"
     }
@@ -20,7 +20,11 @@
   "dependencies": [
     {
       "module_name": "@minecraft/server",
-      "version": "3.0.0-alpha"
+      "version": "2.5.0-beta"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.1.0-beta"
     }
   ]
 }

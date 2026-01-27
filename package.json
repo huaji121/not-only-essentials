@@ -6,6 +6,7 @@
   "private": true,
   "devDependencies": {
     "@minecraft/core-build-tasks": "^5.5.0",
+    "@types/node": "^25.0.10",
     "eslint-plugin-minecraft-linting": "^2.0.10",
     "source-map": "^0.7.4",
     "ts-node": "^10.9.1",
@@ -23,9 +24,10 @@
     "enablemcpreviewloopback": "CheckNetIsolation.exe LoopbackExempt -a -p=S-1-15-2-424268864-5579737-879501358-346833251-474568803-887069379-4040235476"
   },
   "dependencies": {
+    "@minecraft/common": "1.2.0",
     "@minecraft/math": "^2.2.11",
     "@minecraft/server": "2.5.0-beta.1.21.132-stable",
-    "@minecraft/server-ui": "^2.0.0",
+    "@minecraft/server-ui": "2.1.0-beta.1.21.132-stable",
     "@minecraft/vanilla-data": "^1.21.90"
   }
 }

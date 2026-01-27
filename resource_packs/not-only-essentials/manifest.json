@@ -1,23 +1,23 @@
 {
   "format_version": 2,
   "header": {
-    "name": "My resource pack",
-    "description": "My resource pack description",
+    "name": "not-only-essentials",
+    "description": "not-only-essentials is a add-on that adds various useful features to Minecraft.",
     "uuid": "2d7ed858-97eb-48a0-b180-7c80d1ce9a48",
     "version": [1, 0, 0],
     "min_engine_version": [1, 20, 30]
   },
   "modules": [
     {
-      "description": "My Resource Pack",
+      "description": "not-only-essentials Resource Pack",
       "type": "resources",
-      "uuid": "503fe660-142b-46a2-8fec-34a54e944720",
+      "uuid": "8883f2a9-edf3-49b4-86e1-f971acd2d0c4",
       "version": [1, 0, 0]
     }
   ],
   "dependencies": [
     {
-      "uuid": "14e467b4-e3aa-49d3-8352-f8439fd7b2ee",
+      "uuid": "019bb512-0be5-4f0d-9594-87f9f22e60ee",
       "version": [1, 0, 0]
     }
   ]

@@ -1,0 +1,19 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "noe:ender_pearl_to_ender_dust"
+    },
+    "priority": 0,
+    "tags": ["crafting_table"],
+    "ingredients": [
+      {
+        "item": "minecraft:ender_pearl"
+      }
+    ],
+    "result": {
+      "item": "noe:ender_dust",
+      "count": 4
+    }
+  }
+}
