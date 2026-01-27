@@ -1,10 +1,11 @@
 import { EntityComponentTypes, ItemComponentUseEvent, ItemCustomComponent, ItemStack } from "@minecraft/server";
-import { formatVector3 } from "./utils";
+import { formatVector3 } from "./utils/tools";
 
 export class EnderScrollUnusedComponent implements ItemCustomComponent {
   onUse(event: ItemComponentUseEvent): void {
     const player = event.source;
     const convertedTo = new ItemStack("noe:ender_scroll", 1);
+
     convertedTo.setDynamicProperties({
       pos_x: player.location.x,
       pos_y: player.location.y,
