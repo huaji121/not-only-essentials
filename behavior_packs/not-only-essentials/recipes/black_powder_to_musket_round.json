@@ -1,0 +1,25 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "noe:black_powder_to_musket_round"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["IBP"],
+    "key": {
+      "I": {
+        "item": "minecraft:iron_ingot"
+      },
+      "B": {
+        "item": "noe:black_powder"
+      },
+      "P": {
+        "item": "minecraft:paper"
+      }
+    },
+    "result": {
+      "item": "noe:musket_round",
+      "count": 2
+    }
+  }
+}

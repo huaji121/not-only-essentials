@@ -16,13 +16,20 @@
     "noe:ender_scroll": {
       "textures": "textures/items/ender_scroll"
     },
-
     "noe:ender_book": {
       "textures": "textures/items/ender_book"
     },
-
     "noe:ender_apple": {
       "textures": "textures/items/ender_apple"
+    },
+    "noe:musket": {
+      "textures": "textures/items/musket"
+    },
+    "noe:musket_round": {
+      "textures": "textures/items/musket_round"
+    },
+    "noe:black_powder": {
+      "textures": "textures/items/black_powder"
     }
   }
 }

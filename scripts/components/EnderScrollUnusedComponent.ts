@@ -16,8 +16,6 @@ export class EnderScrollUnusedComponent implements ItemCustomComponent {
       `§a使用后将你传送到§e${formatDimension(player.dimension)}§6${formatVector3(player.location)}`,
     ]);
 
-    world.sendMessage(player.dimension.id);
-
     player.dimension.playSound("beacon.activate", player.location);
     player.getComponent(EntityComponentTypes.Inventory)?.container.setItem(player.selectedSlotIndex, convertedTo);
   }

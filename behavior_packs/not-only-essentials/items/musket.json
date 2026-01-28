@@ -1,0 +1,24 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "noe:musket",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+
+      "minecraft:icon": {
+        "textures": {
+          "default": "noe:musket"
+        }
+      },
+
+      "minecraft:display_name": {
+        "value": "title.musket.name"
+      }
+    }
+  }
+}

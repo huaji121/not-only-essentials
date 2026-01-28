@@ -1,0 +1,25 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "noe:powder_to_black_powder"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["PC", "PG"],
+    "key": {
+      "P": {
+        "item": "minecraft:gunpowder"
+      },
+      "C": {
+        "tag": "minecraft:coals"
+      },
+      "G": {
+        "item": "minecraft:glowstone_dust"
+      }
+    },
+    "result": {
+      "item": "noe:black_powder",
+      "count": 1
+    }
+  }
+}
