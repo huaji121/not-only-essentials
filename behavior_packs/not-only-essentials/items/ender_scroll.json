@@ -17,8 +17,9 @@
       },
 
       "minecraft:display_name": {
-        "value": "Ender Scroll"
+        "value": "title.ender_scroll.name"
       },
+      "minecraft:glint": true,
 
       "noe:ender_scroll": {}
     }

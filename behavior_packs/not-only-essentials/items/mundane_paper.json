@@ -15,7 +15,7 @@
         }
       },
       "minecraft:display_name": {
-        "value": "Mundane Paper"
+        "value": "title.mundane_paper.name"
       }
     }
   }

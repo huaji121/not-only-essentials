@@ -14,11 +14,7 @@ export class EnderScrollComponent implements ItemCustomComponent {
   onUse(event: ItemComponentUseEvent): void {
     const player = event.source;
     const item = event.itemStack;
-    const pos = {
-      x: <number>item?.getDynamicProperty("pos_x") ?? 0,
-      y: <number>item?.getDynamicProperty("pos_y") ?? 0,
-      z: <number>item?.getDynamicProperty("pos_z") ?? 0,
-    } satisfies Vector3;
+    const pos = <Vector3>item?.getDynamicProperty("pos");
     const dim = world.getDimension(<string>item?.getDynamicProperty("dim") ?? "overworld");
 
     player.teleport(pos, { dimension: dim });

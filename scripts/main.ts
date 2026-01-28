@@ -1,10 +1,7 @@
 import { system, world } from "@minecraft/server";
 import { ActionFormData } from "@minecraft/server-ui";
-import "./register-components";
 
-world.afterEvents.chatSend.subscribe((event) => {
-  world.sendMessage(`You said: ${event.message}`);
-});
+import "./register-components";
 
 system.afterEvents.scriptEventReceive.subscribe((event) => {
   switch (event.id) {
@@ -20,6 +17,15 @@ system.afterEvents.scriptEventReceive.subscribe((event) => {
       });
       break;
     case "dbg:test1":
+      for (let i = 0; i < 16; i++) {
+        const angle = (Math.PI * 2 * i) / 16;
+
+        event.sourceEntity?.dimension.spawnParticle("minecraft:endrod", {
+          x: event.sourceEntity.location.x + Math.cos(angle) * 0.5,
+          y: event.sourceEntity.location.y + 0.5,
+          z: event.sourceEntity.location.z + Math.sin(angle) * 0.5,
+        });
+      }
       break;
 
     default:

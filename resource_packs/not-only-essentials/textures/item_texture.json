@@ -19,6 +19,10 @@
 
     "noe:ender_book": {
       "textures": "textures/items/ender_book"
+    },
+
+    "noe:ender_apple": {
+      "textures": "textures/items/ender_apple"
     }
   }
 }

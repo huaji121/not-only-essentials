@@ -1,0 +1,22 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "noe:apple_to_ender_apple"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["EEE", "EAE", "EEE"],
+    "key": {
+      "A": {
+        "item": "minecraft:apple"
+      },
+      "E": {
+        "item": "noe:ender_dust"
+      }
+    },
+    "result": {
+      "item": "noe:ender_apple",
+      "count": 1
+    }
+  }
+}

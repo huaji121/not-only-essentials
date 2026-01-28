@@ -5,3 +5,4 @@ node_modules/
 dist/
 build/
 lib/
+texture_processor/__pycache__
