@@ -18,6 +18,10 @@
 
       "minecraft:display_name": {
         "value": "title.musket_round.name"
+      },
+
+      "minecraft:projectile": {
+        "projectile_entity": "noe:musket_round"
       }
     }
   }

@@ -15,10 +15,22 @@
           "default": "noe:musket"
         }
       },
-
       "minecraft:display_name": {
         "value": "title.musket.name"
-      }
+      },
+      "minecraft:hand_equipped": true,
+      "minecraft:use_modifiers": {
+        "use_duration": 3200
+      },
+      "minecraft:food": {
+        "nutrition": 0,
+        "can_always_eat": true
+      },
+      "minecraft:cooldown": {
+        "category": "musket",
+        "duration": 0.8
+      },
+      "noe:musket": {}
     }
   }
 }

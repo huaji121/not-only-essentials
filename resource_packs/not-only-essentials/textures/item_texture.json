@@ -1,5 +1,6 @@
 {
   "resource_pack_name": "Not Only Essentials",
+  "texture_name": "atlas.items",
   "texture_data": {
     "noe:goo": {
       "textures": "textures/items/goo"

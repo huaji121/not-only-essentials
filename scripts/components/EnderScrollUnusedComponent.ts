@@ -1,6 +1,6 @@
 import { EntityComponentTypes, ItemComponentUseEvent, ItemCustomComponent, ItemStack, world } from "@minecraft/server";
-import { formatDimension as formatDimension, formatVector3 } from "../utils/tools";
 import { MOD_ID } from "../ModID";
+import { formatDimension, formatVector3 } from "../utils/tools";
 
 export class EnderScrollUnusedComponent implements ItemCustomComponent {
   onUse(event: ItemComponentUseEvent): void {
