@@ -15,7 +15,7 @@
         }
       },
       "minecraft:display_name": {
-        "value": "title.ender_apple.name"
+        "value": "title.noe:ender_apple.name"
       },
       "minecraft:use_modifiers": {
         "use_duration": 1.6

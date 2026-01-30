@@ -17,7 +17,7 @@
       },
 
       "minecraft:display_name": {
-        "value": "title.ender_book.name"
+        "value": "title.noe:ender_book.name"
       }
     }
   }

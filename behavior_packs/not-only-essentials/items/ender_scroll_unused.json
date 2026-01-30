@@ -17,7 +17,7 @@
       },
 
       "minecraft:display_name": {
-        "value": "title.ender_scroll_unused.name"
+        "value": "title.noe:ender_scroll_unused.name"
       },
 
       "noe:ender_scroll_unused": {}

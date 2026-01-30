@@ -1,10 +1,12 @@
 import {
   CustomComponentParameters,
   EntityComponentTypes,
+  GameMode,
   ItemComponentUseEvent,
   ItemCustomComponent,
   ItemStack,
   VanillaEntityIdentifier,
+  world,
 } from "@minecraft/server";
 import { MOD_ID } from "../ModID";
 import { scaleVector3 } from "../utils/vector";
@@ -16,9 +18,11 @@ export class MusketComponent implements ItemCustomComponent {
     if (!inventory) {
       return;
     }
-    if (!inventory.contains(new ItemStack(MOD_ID.of("musket_round")))) {
-      player.playSound("block.itemframe.break");
-      return;
+    if (!(player.getGameMode() === GameMode.Creative)) {
+      if (!inventory.contains(new ItemStack(MOD_ID.of("musket_round")))) {
+        player.playSound("block.itemframe.break");
+        return;
+      }
     }
 
     const projectile = player.dimension.spawnEntity(
@@ -40,3 +44,13 @@ export class MusketComponent implements ItemCustomComponent {
     }
   }
 }
+
+// world.afterEvents.entityDie.subscribe((event) => {
+//   world.sendMessage(event.damageSource.cause);
+//   if (event.damageSource.damagingEntity) {
+//     event.damageSource.damagingEntity = undefined;
+//     // world.sendMessage(`Entity: ${event.damageSource.damagingEntity.nameTag}`);
+//   }
+//   if (event.damageSource.damagingProjectile)
+//     world.sendMessage(`Projectile: ${event.damageSource.damagingProjectile.nameTag}`);
+// });

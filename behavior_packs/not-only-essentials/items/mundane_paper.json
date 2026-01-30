@@ -15,7 +15,7 @@
         }
       },
       "minecraft:display_name": {
-        "value": "title.mundane_paper.name"
+        "value": "title.noe:mundane_paper.name"
       }
     }
   }

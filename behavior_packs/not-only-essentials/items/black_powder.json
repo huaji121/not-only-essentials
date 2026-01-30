@@ -17,7 +17,7 @@
       },
 
       "minecraft:display_name": {
-        "value": "title.black_powder.name"
+        "value": "title.noe:black_powder.name"
       }
     }
   }

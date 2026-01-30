@@ -16,7 +16,7 @@
         }
       },
       "minecraft:display_name": {
-        "value": "title.musket.name"
+        "value": "title.noe:musket.name"
       },
       "minecraft:hand_equipped": true,
       "minecraft:use_modifiers": {

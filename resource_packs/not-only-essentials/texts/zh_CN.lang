@@ -1,17 +1,20 @@
-title.ender_apple.name=§5末影苹果
+title.noe:ender_apple.name=§5末影苹果
 
-title.ender_dust.name=末影粉
+title.noe:ender_dust.name=末影粉
 
-title.ender_scroll.name=§5末影卷轴
-title.ender_scroll_unused.name=§s未使用的末影卷轴
+title.noe:ender_scroll.name=§5末影卷轴
+title.noe:ender_scroll_unused.name=§s未使用的末影卷轴
 
-title.ender_book.name=§5末影之书
+title.noe:ender_book.name=§5末影之书
 
-title.mundane_paper.name=平凡的纸
+title.noe:mundane_paper.name=平凡的纸
 
-title.goo.name=奇怪的粘液
+title.noe:goo.name=奇怪的粘液
 
-title.musket.name=火枪
-title.musket_round.name=火枪弹
-title.black_powder.name=黑火药
+title.noe:musket.name=火枪
+title.noe:musket_round.name=火枪弹
+
+entity.noe:musket_round.name=火枪弹
+
+title.noe:black_powder.name=黑火药
 
