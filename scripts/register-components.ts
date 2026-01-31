@@ -3,6 +3,7 @@ import { EnderScrollUnusedComponent } from "./components/EnderScrollUnusedCompon
 import { EnderScrollComponent } from "./components/EnderScrollComponent";
 import { EnderAppleComponent } from "./components/EnderAppleComponent";
 import { MusketComponent } from "./components/MusketComponent";
+import { CactusSwordComponent } from "./components/CactusSwordComponent";
 
 system.beforeEvents.startup.subscribe((initEvent) => {
   // Register components here
@@ -10,4 +11,5 @@ system.beforeEvents.startup.subscribe((initEvent) => {
   initEvent.itemComponentRegistry.registerCustomComponent("noe:ender_scroll", new EnderScrollComponent());
   initEvent.itemComponentRegistry.registerCustomComponent("noe:ender_apple", new EnderAppleComponent());
   initEvent.itemComponentRegistry.registerCustomComponent("noe:musket", new MusketComponent());
+  initEvent.itemComponentRegistry.registerCustomComponent("noe:cactus_sword", new CactusSwordComponent());
 });

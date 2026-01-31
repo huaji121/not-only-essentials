@@ -31,6 +31,9 @@
     },
     "noe:black_powder": {
       "textures": "textures/items/black_powder"
+    },
+    "noe:cactus_sword": {
+      "textures": "textures/items/cactus_sword"
     }
   }
 }

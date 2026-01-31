@@ -1,0 +1,58 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "noe:cactus_sword",
+      "menu_category": {
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.sword"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+
+      "minecraft:icon": {
+        "textures": {
+          "default": "noe:cactus_sword"
+        }
+      },
+
+      "minecraft:display_name": {
+        "value": "title.noe:cactus_sword.name"
+      },
+
+      "minecraft:hand_equipped": true,
+
+      "minecraft:damage": {
+        "value": 9
+      },
+      "minecraft:can_destroy_in_creative": false,
+      "minecraft:durability": {
+        "damage_chance": {
+          "min": 0,
+          "max": 100
+        },
+        "max_durability": 36
+      },
+
+      "minecraft:enchantable": {
+        "slot": "sword",
+        "value": 15
+      },
+
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["noe:cactus_sword"],
+            "repair_amount": "context.other->query.remaining_durability"
+          },
+          {
+            "items": ["minecraft:cactus"],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+      "noe:cactus_sword": {}
+    }
+  }
+}
