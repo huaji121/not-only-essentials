@@ -17,6 +17,14 @@
     "result": {
       "item": "noe:ender_scroll_unused",
       "count": 1
-    }
+    },
+    "unlock": [
+      {
+        "item": "noe:mundane_paper"
+      },
+      {
+        "item": "noe:ender_dust"
+      }
+    ]
   }
 }

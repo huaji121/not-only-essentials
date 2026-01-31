@@ -19,7 +19,18 @@
     },
     "result": {
       "item": "noe:musket_round",
-      "count": 2
-    }
+      "count": 4
+    },
+    "unlock": [
+      {
+        "item": "minecraft:iron_ingot"
+      },
+      {
+        "item": "noe:black_powder"
+      },
+      {
+        "item": "minecraft:paper"
+      }
+    ]
   }
 }

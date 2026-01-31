@@ -17,6 +17,14 @@
     "result": {
       "item": "noe:ender_apple",
       "count": 1
-    }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:apple"
+      },
+      {
+        "item": "noe:ender_dust"
+      }
+    ]
   }
 }

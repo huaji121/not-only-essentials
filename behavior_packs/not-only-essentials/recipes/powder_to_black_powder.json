@@ -19,7 +19,18 @@
     },
     "result": {
       "item": "noe:black_powder",
-      "count": 1
-    }
+      "count": 4
+    },
+    "unlock": [
+      {
+        "item": "minecraft:gunpowder"
+      },
+      {
+        "tag": "minecraft:coals"
+      },
+      {
+        "item": "minecraft:glowstone_dust"
+      }
+    ]
   }
 }

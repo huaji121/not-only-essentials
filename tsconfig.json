@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "moduleResolution": "node16",
-    "module": "Node16",
+    "moduleResolution": "bundler",
+    "module": "esnext",
     "declaration": false,
     "noLib": false,
     "emitDecoratorMetadata": true,

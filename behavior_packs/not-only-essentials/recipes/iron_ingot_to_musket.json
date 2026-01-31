@@ -27,6 +27,23 @@
     "result": {
       "item": "noe:musket",
       "count": 1
-    }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:iron_ingot"
+      },
+      {
+        "item": "minecraft:iron_block"
+      },
+      {
+        "item": "minecraft:flint_and_steel"
+      },
+      {
+        "item": "minecraft:stick"
+      },
+      {
+        "tag": "minecraft:logs"
+      }
+    ]
   }
 }

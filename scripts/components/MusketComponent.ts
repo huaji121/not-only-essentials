@@ -6,13 +6,12 @@ import {
   ItemCustomComponent,
   ItemStack,
   VanillaEntityIdentifier,
-  world,
 } from "@minecraft/server";
 import { MOD_ID } from "../ModID";
-import { scaleVector3 } from "../utils/vector";
+import { Vector3Utils } from "@minecraft/math";
 
 export class MusketComponent implements ItemCustomComponent {
-  onUse(event: ItemComponentUseEvent, para: CustomComponentParameters): void {
+  onUse(event: ItemComponentUseEvent): void {
     const player = event.source;
     const inventory = player.getComponent(EntityComponentTypes.Inventory)?.container;
     if (!inventory) {
@@ -37,7 +36,7 @@ export class MusketComponent implements ItemCustomComponent {
     if (projectileComponent) {
       projectileComponent.owner = player;
 
-      projectileComponent.shoot(scaleVector3(playerView, velocity));
+      projectileComponent.shoot(Vector3Utils.scale(playerView, velocity));
       player.playSound("cauldron.explode");
       player.spawnParticle("minecraft:cauldron_explosion_emitter", player.getHeadLocation());
       player.runCommand("clear @s noe:musket_round 0 1");

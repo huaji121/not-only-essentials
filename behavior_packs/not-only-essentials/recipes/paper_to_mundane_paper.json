@@ -17,6 +17,14 @@
     "result": {
       "item": "noe:mundane_paper",
       "count": 1
-    }
+    },
+    "unlock": [
+      {
+        "item": "minecraft:paper"
+      },
+      {
+        "item": "minecraft:sugar"
+      }
+    ]
   }
 }
