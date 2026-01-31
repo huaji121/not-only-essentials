@@ -17,5 +17,5 @@ system.runInterval(
       console.log(`在维度${dim.id}清理了${idx + 1}个火枪弹实体`);
     }
   },
-  3 * 60 * 20
+  3 * 60 * 20 /**三分钟 */
 );
