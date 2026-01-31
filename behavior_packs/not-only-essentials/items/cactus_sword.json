@@ -52,6 +52,9 @@
           }
         ]
       },
+      "minecraft:fuel": {
+        "duration": 10.0
+      },
       "noe:cactus_sword": {}
     }
   }
