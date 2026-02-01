@@ -34,6 +34,9 @@
     },
     "noe:cactus_sword": {
       "textures": "textures/items/cactus_sword"
+    },
+    "noe:advanced_leather": {
+      "textures": "textures/items/advanced_leather"
     }
   }
 }

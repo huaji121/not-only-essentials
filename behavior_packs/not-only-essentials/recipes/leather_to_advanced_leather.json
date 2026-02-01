@@ -1,0 +1,36 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "noe:leather_to_advanced_leather"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["DOD", "OLO", "DOD"],
+    "key": {
+      "L": {
+        "item": "minecraft:leather"
+      },
+      "D": {
+        "item": "minecraft:diamond"
+      },
+      "O": {
+        "item": "minecraft:obsidian"
+      }
+    },
+    "result": {
+      "item": "noe:advanced_leather",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "minecraft:leather"
+      },
+      {
+        "item": "minecraft:diamond"
+      },
+      {
+        "item": "minecraft:obsidian"
+      }
+    ]
+  }
+}

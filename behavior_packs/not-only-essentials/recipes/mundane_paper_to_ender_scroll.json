@@ -2,7 +2,7 @@
   "format_version": "1.12",
   "minecraft:recipe_shaped": {
     "description": {
-      "identifier": "mundane_paper_to_ender_scroll"
+      "identifier": "noe:mundane_paper_to_ender_scroll"
     },
     "tags": ["crafting_table"],
     "pattern": ["EEE", "EPE", "EEE"],
