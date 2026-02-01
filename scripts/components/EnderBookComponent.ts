@@ -29,16 +29,16 @@ interface DimensionPosition {
 }
 
 export class EnderBookComponent implements ItemCustomComponent {
-  private static COST_SCALE = 0.003;
+  private static COST_SCALE = 0.001;
   private static COST_SCALE_CROSS_DIMENSION = 8;
 
-  private static createEditPointForm(pointName: string, pos: DimensionPosition) {
-    return new ActionFormData()
-      .title(`路径点 ${pointName}`)
-      .body(`维度:${formatDimension(pos.dim)}\n位置:${formatVector3(pos.pos)}`)
-      .button("传送")
-      .button("修改名称")
-      .button("删除");
+  private static computeRequiredEnderDustAmount(player: Player, position: DimensionPosition) {
+    const requiredAmount = Math.floor(
+      EnderBookComponent.COST_SCALE *
+        (player.dimension.id === position.dim ? 1 : EnderBookComponent.COST_SCALE_CROSS_DIMENSION) *
+        Vector3Utils.distance(player.location, position.pos)
+    );
+    return requiredAmount;
   }
 
   onUse(event: ItemComponentUseEvent) {
@@ -116,31 +116,28 @@ export class EnderBookComponent implements ItemCustomComponent {
             for (let key in itemPointTableObject) {
               const position = itemPointTableObject[key] as DimensionPosition;
 
-              const requiredAmount = Math.floor(
-                EnderBookComponent.COST_SCALE *
-                  (player.dimension.id === position.dim ? 1 : EnderBookComponent.COST_SCALE_CROSS_DIMENSION) *
-                  Vector3Utils.distance(player.location, position.pos)
-              );
+              const requiredAmount = EnderBookComponent.computeRequiredEnderDustAmount(player, position);
               keyList.push(key);
-              pointsForm.button(key + (requiredAmount > 0 ? `(传送消耗${requiredAmount}末影粉末)` : ""));
+              pointsForm.button(key + (requiredAmount > 0 ? `(传送预计消耗${requiredAmount}末影粉末!)` : ""));
             }
 
             pointsForm.show(player).then((result) => {
               if (result.selection === undefined) return;
               const nameKey = keyList[result.selection];
               const position = itemPointTableObject[nameKey] as DimensionPosition;
-              const editPointForm = EnderBookComponent.createEditPointForm(nameKey, position);
-
+              const requiredAmount = EnderBookComponent.computeRequiredEnderDustAmount(player, position);
+              const editPointForm = new ActionFormData()
+                .title(`路径点 ${nameKey}`)
+                .body(
+                  `维度:${formatDimension(position.dim)}\n位置:${formatVector3(position.pos)}\n传送预计消耗${requiredAmount}末影粉末`
+                )
+                .button("传送")
+                .button("修改名称")
+                .button("删除");
               editPointForm.show(player).then((result) => {
                 if (result.selection === undefined) return;
                 switch (result.selection) {
                   case 0 /**传送 */:
-                    const requiredAmount = Math.floor(
-                      EnderBookComponent.COST_SCALE *
-                        (player.dimension.id === position.dim ? 1 : EnderBookComponent.COST_SCALE_CROSS_DIMENSION) *
-                        Vector3Utils.distance(player.location, position.pos)
-                    );
-
                     tryToSpendItem(
                       player,
                       MOD_ID.of("ender_dust"),
