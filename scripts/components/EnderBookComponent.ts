@@ -93,7 +93,7 @@ export class EnderBookComponent implements ItemCustomComponent {
                   pos: player.location,
                 } satisfies DimensionPosition;
                 updatePlayerOnHandItemDynamicJson(player, currentOnHandItem, itemPointTableJson, itemPointTableObject);
-                world.sendMessage(`§a成功创建了路径点§e${name}`);
+                player.sendMessage(`§a成功创建了路径点§e${name}`);
                 player.dimension.playSound("beacon.activate", player.location);
               }
             });
