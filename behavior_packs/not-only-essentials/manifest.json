@@ -4,7 +4,7 @@
     "name": "not-only-essentials",
     "description": "not-only-essentials is a add-on that adds various useful features to Minecraft.",
     "uuid": "019bb512-0be5-4f0d-9594-87f9f22e60ee",
-    "version": [1, 0, 0],
+    "version": [1, 1, 0],
     "min_engine_version": [1, 20, 30]
   },
   "modules": [
@@ -13,7 +13,7 @@
       "language": "javascript",
       "type": "script",
       "uuid": "7b6c38dd-cb4c-474e-8043-095e4a1feaf4",
-      "version": [1, 0, 0],
+      "version": [1, 1, 0],
       "entry": "scripts/main.js"
     }
   ],
