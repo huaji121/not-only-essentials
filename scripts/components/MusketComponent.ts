@@ -30,7 +30,7 @@ export class MusketComponent implements ItemCustomComponent {
       player.getHeadLocation(),
       {}
     );
-    const velocity = 3;
+    const velocity = 5;
     const playerView = player.getViewDirection();
     const projectileComponent = projectile.getComponent(EntityComponentTypes.Projectile);
 
