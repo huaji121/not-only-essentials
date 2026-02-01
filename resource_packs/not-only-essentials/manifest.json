@@ -1,15 +1,15 @@
 {
   "format_version": 2,
   "header": {
-    "name": "not-only-essentials",
-    "description": "not-only-essentials is a add-on that adds various useful features to Minecraft.",
+    "name": "基础++|not-only-essentials",
+    "description": "基础++ 向游戏内添加了非常多有趣的新东西。\ngithub页面:https://github.com/huaji121/not-only-essentials",
     "uuid": "2d7ed858-97eb-48a0-b180-7c80d1ce9a48",
     "version": [1, 1, 0],
     "min_engine_version": [1, 20, 30]
   },
   "modules": [
     {
-      "description": "not-only-essentials Resource Pack",
+      "description": "基础++ 资源包",
       "type": "resources",
       "uuid": "8883f2a9-edf3-49b4-86e1-f971acd2d0c4",
       "version": [1, 1, 0]
