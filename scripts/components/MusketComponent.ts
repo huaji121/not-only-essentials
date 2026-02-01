@@ -17,7 +17,8 @@ export class MusketComponent implements ItemCustomComponent {
     if (!inventory) {
       return;
     }
-    if (!(player.getGameMode() === GameMode.Creative)) {
+    const gameMode = player.getGameMode();
+    if (!(gameMode === GameMode.Creative)) {
       if (!inventory.contains(new ItemStack(MOD_ID.of("musket_round")))) {
         player.playSound("block.itemframe.break");
         return;
@@ -39,17 +40,9 @@ export class MusketComponent implements ItemCustomComponent {
       projectileComponent.shoot(Vector3Utils.scale(playerView, velocity));
       player.playSound("cauldron.explode");
       player.spawnParticle("minecraft:cauldron_explosion_emitter", player.getHeadLocation());
-      player.runCommand("clear @s noe:musket_round 0 1");
+      if (gameMode !== GameMode.Creative) {
+        player.runCommand("clear @s noe:musket_round 0 1");
+      }
     }
   }
 }
-
-// world.afterEvents.entityDie.subscribe((event) => {
-//   world.sendMessage(event.damageSource.cause);
-//   if (event.damageSource.damagingEntity) {
-//     event.damageSource.damagingEntity = undefined;
-//     // world.sendMessage(`Entity: ${event.damageSource.damagingEntity.nameTag}`);
-//   }
-//   if (event.damageSource.damagingProjectile)
-//     world.sendMessage(`Projectile: ${event.damageSource.damagingProjectile.nameTag}`);
-// });

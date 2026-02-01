@@ -11,6 +11,12 @@ system.beforeEvents.startup.subscribe(() => {
 
 system.afterEvents.scriptEventReceive.subscribe((event) => {
   switch (event.id) {
+    case "dbg:test":
+      break;
+
+    case "dbg:test1":
+      break;
+
     default:
       break;
   }

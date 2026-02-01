@@ -13,7 +13,7 @@ export class EnderScrollUnusedComponent implements ItemCustomComponent {
     });
 
     convertedTo.setLore([
-      `§a使用后将你传送到§e${formatDimension(player.dimension)}§6${formatVector3(player.location)}`,
+      `§a使用后将你传送到§e${formatDimension(player.dimension.id)}§6${formatVector3(player.location)}`,
     ]);
 
     player.dimension.playSound("beacon.activate", player.location);
