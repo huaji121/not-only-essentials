@@ -16,7 +16,6 @@ world.afterEvents.projectileHitEntity.subscribe((event) => {
 
     //收尾
     projectile.remove();
-    world.sendMessage("Test");
   }
 });
 
