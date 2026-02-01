@@ -16,9 +16,12 @@ import {
   formatVector3,
   getPlayerOnHandItem,
   setPlayerOnHandItem,
+  tryToSpendItem,
   updatePlayerOnHandItemDynamicJson,
 } from "../utils/tools";
 import { DynamicJson } from "../utils/DynamicJson";
+import { MOD_ID } from "../ModID";
+import { Vector3Utils } from "@minecraft/math";
 
 interface DimensionPosition {
   dim: string;
@@ -26,6 +29,9 @@ interface DimensionPosition {
 }
 
 export class EnderBookComponent implements ItemCustomComponent {
+  private static COST_SCALE = 0.003;
+  private static COST_SCALE_CROSS_DIMENSION = 8;
+
   private static createEditPointForm(pointName: string, pos: DimensionPosition) {
     return new ActionFormData()
       .title(`路径点 ${pointName}`)
@@ -33,29 +39,6 @@ export class EnderBookComponent implements ItemCustomComponent {
       .button("传送")
       .button("修改名称")
       .button("删除");
-  }
-
-  private static createPointListForm(player: Player) {
-    const currentOnHandItem = getPlayerOnHandItem(player);
-    if (!currentOnHandItem) return;
-    let itemPointTableJson = new DynamicJson<any>(currentOnHandItem, "POINT_TABLE");
-    /**处理初始状态 */
-    if (itemPointTableJson.get() === undefined) {
-      itemPointTableJson.set({});
-    }
-
-    let itemPointTableObject = itemPointTableJson.get();
-
-    const pointsForm = new ActionFormData().title("路径点");
-
-    let keyList: Array<string> = new Array();
-
-    for (let key in itemPointTableObject) {
-      const value = itemPointTableObject[key] as DimensionPosition;
-      keyList.push(key);
-      pointsForm.button(key);
-    }
-    return pointsForm;
   }
 
   onUse(event: ItemComponentUseEvent) {
@@ -90,7 +73,7 @@ export class EnderBookComponent implements ItemCustomComponent {
                   player.sendMessage(`§a路径点名称不能为空`);
                   return;
                 }
-                if (itemPointTableObject[name] != undefined) {
+                if (itemPointTableObject[name] !== undefined) {
                   player.sendMessage(`§a路径点§e${name}§a已存在`);
                   return;
                 }
@@ -103,7 +86,6 @@ export class EnderBookComponent implements ItemCustomComponent {
                  *    ...
                  *  NAME:#DimensionPosition
                  *    ...
-                 *
                  *
                  */
                 itemPointTableObject[name] = {
@@ -132,9 +114,15 @@ export class EnderBookComponent implements ItemCustomComponent {
             let keyList: Array<string> = new Array();
 
             for (let key in itemPointTableObject) {
-              const value = itemPointTableObject[key] as DimensionPosition;
+              const position = itemPointTableObject[key] as DimensionPosition;
+
+              const requiredAmount = Math.floor(
+                EnderBookComponent.COST_SCALE *
+                  (player.dimension.id === position.dim ? 1 : EnderBookComponent.COST_SCALE_CROSS_DIMENSION) *
+                  Vector3Utils.distance(player.location, position.pos)
+              );
               keyList.push(key);
-              pointsForm.button(key);
+              pointsForm.button(key + (requiredAmount > 0 ? `(传送消耗${requiredAmount}末影粉末)` : ""));
             }
 
             pointsForm.show(player).then((result) => {
@@ -147,11 +135,27 @@ export class EnderBookComponent implements ItemCustomComponent {
                 if (result.selection === undefined) return;
                 switch (result.selection) {
                   case 0 /**传送 */:
-                    player.teleport(position.pos, { dimension: world.getDimension(position.dim) });
-                    player.sendMessage(`§a已传送到路径点§e${nameKey}`);
-                    system.runTimeout(() => {
-                      player.dimension.playSound("beacon.deactivate", player.location);
-                    }, 1);
+                    const requiredAmount = Math.floor(
+                      EnderBookComponent.COST_SCALE *
+                        (player.dimension.id === position.dim ? 1 : EnderBookComponent.COST_SCALE_CROSS_DIMENSION) *
+                        Vector3Utils.distance(player.location, position.pos)
+                    );
+
+                    tryToSpendItem(
+                      player,
+                      MOD_ID.of("ender_dust"),
+                      () => /**failed */ {
+                        player.sendMessage(`§a需要${requiredAmount}个§e末影粉`);
+                      },
+                      () => /**successful */ {
+                        player.teleport(position.pos, { dimension: world.getDimension(position.dim) });
+                        player.sendMessage(`§a已传送到路径点§e${nameKey}`);
+                        system.runTimeout(() => {
+                          player.dimension.playSound("beacon.deactivate", player.location);
+                        }, requiredAmount);
+                      },
+                      requiredAmount
+                    );
                     break;
 
                   case 1 /**修改 */:

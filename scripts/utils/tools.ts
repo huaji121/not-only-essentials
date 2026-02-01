@@ -120,7 +120,7 @@ export function tryToSpendItem(
   itemType: string,
   failure: () => void,
   success: () => void,
-  amount: number = 1
+  requiredAmount: number
   // spendOnCreative: boolean = false
 ) {
   const gameMode = player.getGameMode();
@@ -128,13 +128,13 @@ export function tryToSpendItem(
   if (!inventory) return;
 
   if (gameMode !== GameMode.Creative) {
-    if (!inventory.contains(new ItemStack(itemType))) {
-      failure();
-      return;
+    if (requiredAmount > 0) {
+      if (!inventory.contains(new ItemStack(itemType))) {
+        failure();
+        return;
+      }
+      player.runCommand(`clear @s ${itemType} 0 ${requiredAmount}`);
     }
-  }
-  if (gameMode !== GameMode.Creative) {
-    player.runCommand(`clear @s ${itemType} 0 ${amount}`);
   }
   success();
 }
