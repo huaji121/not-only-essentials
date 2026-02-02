@@ -2,31 +2,26 @@ import { EntityApplyDamageByProjectileOptions, EntityComponent, EntityComponentT
 import { MOD_ID } from "./ModID";
 import { MusketComponent } from "./components/MusketComponent";
 
+/**施加伤害 */
 world.afterEvents.projectileHitEntity.subscribe((event) => {
   const projectile = event.projectile;
   if (!projectile.isValid) {
     return;
   }
-  if (projectile.typeId === MOD_ID.of("musket_round")) {
-    const damager = projectile.getComponent(EntityComponentTypes.Projectile)?.owner;
 
-    event.getEntityHit().entity?.applyDamage(MusketComponent.PROJECTILE_DANEMR, {
-      damagingEntity: damager,
-      damagingProjectile: event.projectile,
-    } satisfies EntityApplyDamageByProjectileOptions);
+  switch (projectile.typeId) {
+    case MOD_ID.of("musket_round"):
+      const damager = projectile.getComponent(EntityComponentTypes.Projectile)?.owner;
+      event.getEntityHit().entity?.applyDamage(MusketComponent.PROJECTILE_DANEMR, {
+        damagingEntity: damager,
+        damagingProjectile: event.projectile,
+      } satisfies EntityApplyDamageByProjectileOptions);
 
-    //收尾
-    projectile.remove();
-  }
-});
+      //收尾
+      projectile.remove();
+      break;
 
-world.afterEvents.projectileHitBlock.subscribe((event) => {
-  const projectile = event.projectile;
-  if (!projectile.isValid) {
-    return;
-  }
-
-  if (projectile.typeId === MOD_ID.of("musket_round")) {
-    projectile.remove();
+    default:
+      break;
   }
 });

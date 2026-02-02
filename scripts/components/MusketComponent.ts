@@ -6,6 +6,7 @@ import {
   ItemCustomComponent,
   ItemStack,
   VanillaEntityIdentifier,
+  world,
 } from "@minecraft/server";
 import { MOD_ID } from "../ModID";
 import { Vector3Utils } from "@minecraft/math";
@@ -23,7 +24,7 @@ export class MusketComponent implements ItemCustomComponent {
       player,
       MOD_ID.of("musket_round"),
       () => /**failed */ {
-        player.playSound("block.itemframe.break");
+        player.dimension.playSound("block.itemframe.break", player.location);
       },
       () => /**successful */ {
         const projectile = player.dimension.spawnEntity(
@@ -37,8 +38,8 @@ export class MusketComponent implements ItemCustomComponent {
           projectileComponent.owner = player;
 
           projectileComponent.shoot(Vector3Utils.scale(playerView, MusketComponent.PROJECTILE_VELOCITY_SCALE));
-          player.playSound("cauldron.explode");
-          player.spawnParticle("minecraft:cauldron_explosion_emitter", player.getHeadLocation());
+          player.dimension.playSound("cauldron.explode", player.location);
+          player.dimension.spawnParticle("minecraft:cauldron_explosion_emitter", player.getHeadLocation());
         }
       },
       1
