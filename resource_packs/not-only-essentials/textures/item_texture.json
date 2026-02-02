@@ -37,6 +37,18 @@
     },
     "noe:advanced_leather": {
       "textures": "textures/items/advanced_leather"
+    },
+    "noe:caramel_toast": {
+      "textures": "textures/items/caramel_toast"
+    },
+    "noe:prepared_flesh": {
+      "textures": "textures/items/prepared_flesh"
+    },
+    "noe:purified_flesh": {
+      "textures": "textures/items/advanced_leather"
+    },
+    "noe:cooked_purified_flesh": {
+      "textures": "textures/items/advanced_leather"
     }
   }
 }

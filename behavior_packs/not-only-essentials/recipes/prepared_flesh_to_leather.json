@@ -1,0 +1,16 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "noe:prepared_flesh_to_leather"
+    },
+    "tags": ["furnace", "smoker"],
+    "input": "noe:prepared_flesh",
+    "output": "minecraft:leather",
+    "unlock": [
+      {
+        "item": "noe:prepared_flesh"
+      }
+    ]
+  }
+}
