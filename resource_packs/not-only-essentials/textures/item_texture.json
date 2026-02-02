@@ -45,10 +45,10 @@
       "textures": "textures/items/prepared_flesh"
     },
     "noe:purified_flesh": {
-      "textures": "textures/items/advanced_leather"
+      "textures": "textures/items/purified_flesh"
     },
     "noe:cooked_purified_flesh": {
-      "textures": "textures/items/advanced_leather"
+      "textures": "textures/items/cooked_purified_flesh"
     }
   }
 }

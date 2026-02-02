@@ -1,0 +1,16 @@
+{
+  "format_version": "1.12",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "noe:purified_flesh_to_cooked_purified_flesh"
+    },
+    "tags": ["furnace", "smoker"],
+    "input": "noe:purified_flesh",
+    "output": "noe:cooked_purified_flesh",
+    "unlock": [
+      {
+        "item": "noe:purified_flesh"
+      }
+    ]
+  }
+}
