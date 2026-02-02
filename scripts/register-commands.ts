@@ -18,9 +18,6 @@ function formatPlayerOnlineTimeRank() {
       onlineTime: world.getDynamicProperty(getPlayerOnlineTimeKey(playerName)) as number,
     });
   }
-  // for (let info of scores) {
-  //   array.push({ playerName: info.participant.displayName, onlineTime: info.score });
-  // }
   list.sort((a, b) => {
     return b.onlineTime - a.onlineTime;
   });

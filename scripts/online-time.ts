@@ -1,12 +1,13 @@
 import { DisplaySlotId, ScoreboardObjective, system, world } from "@minecraft/server";
+import { MOD_ID } from "./ModID";
 
-export let ONLINE_TIME_KEY = "online_time";
-export let ONLINE_TIME_DISPLAY_ID = "online_time_display";
+export let ONLINE_TIME_SURFFIX = "online_time";
+export let ONLINE_TIME_DISPLAY_ID = MOD_ID.of("online_time_display");
 
 let onlineTimeDisplayObjective: ScoreboardObjective | undefined;
 
 export function getPlayerOnlineTimeKey(playerId: string) {
-  return `${playerId}_${ONLINE_TIME_KEY}`;
+  return MOD_ID.of(`${playerId}_${ONLINE_TIME_SURFFIX}`);
 }
 
 world.afterEvents.worldLoad.subscribe(() => {
@@ -25,7 +26,7 @@ world.afterEvents.playerSpawn.subscribe((event) => {
   if (event.initialSpawn) {
     const player = event.player;
     if (world.getDynamicProperty(getPlayerOnlineTimeKey(player.name)) === undefined) {
-      world.setDynamicProperty(getPlayerOnlineTimeKey(player.name));
+      world.setDynamicProperty(getPlayerOnlineTimeKey(player.name), 0);
     }
   }
 });

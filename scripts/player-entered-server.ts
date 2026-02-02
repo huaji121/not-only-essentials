@@ -1,10 +1,11 @@
 import { world } from "@minecraft/server";
 import { DynamicJson } from "./utils/DynamicJson";
+import { MOD_ID } from "./ModID";
 
 export let playerEnteredServerJson: DynamicJson<string[]>;
 
 world.afterEvents.worldLoad.subscribe(() => {
-  playerEnteredServerJson = new DynamicJson(world, "PLAYER_LIST");
+  playerEnteredServerJson = new DynamicJson(world, MOD_ID.of("PLAYER_LIST"));
   if (playerEnteredServerJson.get() === undefined) {
     playerEnteredServerJson.set(new Array());
   }
