@@ -58,13 +58,7 @@ system.beforeEvents.startup.subscribe(({ customCommandRegistry }) => {
         },
       ],
     },
-    (origin, rankEnum) => {
-      if (origin.sourceEntity === undefined) {
-        return {
-          status: CustomCommandStatus.Failure,
-        };
-      }
-
+    (_, rankEnum) => {
       switch (rankEnum as RankEnum) {
         case RankEnum.onlineTime:
           return {

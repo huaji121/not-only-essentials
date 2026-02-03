@@ -10,7 +10,8 @@ import {
 } from "@minecraft/server";
 import { MOD_ID } from "../ModID";
 import { Vector3Utils } from "@minecraft/math";
-import { tryToSpendItem } from "../utils/tools";
+import { MinecraftItemTypes } from "@minecraft/vanilla-data";
+import { tryToSpendItem } from "../utils/player-item";
 
 export class MusketComponent implements ItemCustomComponent {
   static readonly PROJECTILE_VELOCITY_SCALE = 5;
@@ -22,16 +23,15 @@ export class MusketComponent implements ItemCustomComponent {
 
     tryToSpendItem(
       player,
-      MOD_ID.of("musket_round"),
+      [
+        { itemId: MOD_ID.of("musket_round"), amount: 1 },
+        // { itemId: MinecraftItemTypes.Arrow, amount: 1 },
+      ],
       () => /**failed */ {
         player.dimension.playSound("block.itemframe.break", player.location);
       },
-      () => /**successful */ {
-        const projectile = player.dimension.spawnEntity(
-          MOD_ID.of("musket_round") as VanillaEntityIdentifier,
-          player.getHeadLocation(),
-          {}
-        );
+      (item) => /**successful */ {
+        const projectile = player.dimension.spawnEntity(item as VanillaEntityIdentifier, player.getHeadLocation(), {});
         const projectileComponent = projectile.getComponent(EntityComponentTypes.Projectile);
 
         if (projectileComponent) {
@@ -41,8 +41,7 @@ export class MusketComponent implements ItemCustomComponent {
           player.dimension.playSound("cauldron.explode", player.location);
           player.dimension.spawnParticle("minecraft:cauldron_explosion_emitter", player.getHeadLocation());
         }
-      },
-      1
+      }
     );
   }
 }

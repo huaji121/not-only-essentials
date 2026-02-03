@@ -11,17 +11,16 @@ import {
   world,
 } from "@minecraft/server";
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
-import {
-  formatDimension,
-  formatVector3,
-  getPlayerOnHandItem,
-  setPlayerOnHandItem,
-  tryToSpendItem,
-  updatePlayerOnHandItemDynamicJson,
-} from "../utils/tools";
 import { DynamicJson } from "../utils/DynamicJson";
 import { MOD_ID } from "../ModID";
 import { Vector3Utils } from "@minecraft/math";
+import {
+  getPlayerOnHandItem,
+  setPlayerMainHandItem,
+  tryToSpendItem,
+  updatePlayerOnHandItemDynamicJson,
+} from "../utils/player-item";
+import { formatDimension, formatVector3 } from "../utils/formater";
 
 interface DimensionPosition {
   dim: string;
@@ -140,7 +139,7 @@ export class EnderBookComponent implements ItemCustomComponent {
                   case 0 /**传送 */:
                     tryToSpendItem(
                       player,
-                      MOD_ID.of("ender_dust"),
+                      [{ itemId: MOD_ID.of("ender_dust"), amount: requiredAmount }],
                       () => /**failed */ {
                         player.sendMessage(`§a需要${requiredAmount}个§e末影粉`);
                       },
@@ -150,8 +149,7 @@ export class EnderBookComponent implements ItemCustomComponent {
                         system.runTimeout(() => {
                           player.dimension.playSound("beacon.deactivate", player.location);
                         }, requiredAmount);
-                      },
-                      requiredAmount
+                      }
                     );
                     break;
 
@@ -189,7 +187,7 @@ export class EnderBookComponent implements ItemCustomComponent {
                   case 2 /**删除 */:
                     itemPointTableObject[nameKey] = undefined;
                     itemPointTableJson.set(itemPointTableObject);
-                    setPlayerOnHandItem(player, currentOnHandItem);
+                    setPlayerMainHandItem(player, currentOnHandItem);
                     player.sendMessage(`§a成功删除了路径点§e${nameKey}`);
                     break;
 

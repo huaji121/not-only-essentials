@@ -1,33 +1,4 @@
-import {
-  EffectType,
-  Entity,
-  EntityComponentTypes,
-  EntityEffectOptions,
-  GameMode,
-  ItemStack,
-  Player,
-  system,
-  Vector3,
-} from "@minecraft/server";
-import { MinecraftDimensionTypes } from "@minecraft/vanilla-data";
-import { DynamicJson } from "./DynamicJson";
-
-export function formatVector3(vector: Vector3): string {
-  return `(${vector.x.toFixed(2)}, ${vector.y.toFixed(2)}, ${vector.z.toFixed(2)})`;
-}
-
-export function formatDimension(dimension: string): string {
-  switch (dimension) {
-    case MinecraftDimensionTypes.Overworld:
-      return "主世界";
-    case MinecraftDimensionTypes.Nether:
-      return "下界";
-    case MinecraftDimensionTypes.TheEnd:
-      return "末地";
-    default:
-      return dimension;
-  }
-}
+import { EffectType, Entity, EntityEffectOptions, system, Vector3 } from "@minecraft/server";
 
 /**
  * 原版行为级紫颂果传送
@@ -95,46 +66,4 @@ export function superposeEffects(
   } else {
     entity.addEffect(effectType, duration, options);
   }
-}
-
-export function getPlayerOnHandItem(player: Player) {
-  return player.getComponent(EntityComponentTypes.Inventory)?.container.getItem(player.selectedSlotIndex);
-}
-
-export function setPlayerOnHandItem(player: Player, item: ItemStack) {
-  return player.getComponent(EntityComponentTypes.Inventory)?.container.setItem(player.selectedSlotIndex, item);
-}
-
-export function updatePlayerOnHandItemDynamicJson<T>(
-  player: Player,
-  item: ItemStack,
-  itemJson: DynamicJson<T>,
-  changedItemObj: T
-) {
-  itemJson.set(changedItemObj);
-  setPlayerOnHandItem(player, item);
-}
-
-export function tryToSpendItem(
-  player: Player,
-  itemType: string,
-  failure: () => void,
-  success: () => void,
-  requiredAmount: number
-  // spendOnCreative: boolean = false
-) {
-  const gameMode = player.getGameMode();
-  const inventory = player.getComponent(EntityComponentTypes.Inventory)?.container;
-  if (!inventory) return;
-
-  if (gameMode !== GameMode.Creative) {
-    if (requiredAmount > 0) {
-      if (!inventory.contains(new ItemStack(itemType))) {
-        failure();
-        return;
-      }
-      player.runCommand(`clear @s ${itemType} 0 ${requiredAmount}`);
-    }
-  }
-  success();
 }
