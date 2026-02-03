@@ -5,7 +5,7 @@ export function getPlayerOnHandItem(player: Player) {
   return player.getComponent(EntityComponentTypes.Inventory)?.container.getItem(player.selectedSlotIndex);
 }
 
-export function setPlayerMainHandItem(player: Player, item: ItemStack) {
+export function setPlayerMainHandItem(player: Player, item?: ItemStack) {
   player.getComponent(EntityComponentTypes.Inventory)?.container.setItem(player.selectedSlotIndex, item);
 }
 
@@ -13,7 +13,7 @@ export function getPlayerOffhandItem(player: Player) {
   return player.getComponent(EntityComponentTypes.Equippable)?.getEquipment(EquipmentSlot.Offhand);
 }
 
-export function setPlayerOffhandItem(player: Player, item: ItemStack) {
+export function setPlayerOffhandItem(player: Player, item?: ItemStack) {
   player.getComponent(EntityComponentTypes.Equippable)?.setEquipment(EquipmentSlot.Offhand, item);
 }
 
@@ -66,8 +66,12 @@ export function tryToSpendItem(
           /**非创造模式消耗弹药 */
           if (gameMode !== GameMode.Creative) {
             // player.runCommand(`clear @s ${requiredItem.itemId} 0 ${requiredItem.amount}`);
-            offHandItem.amount--;
-            setPlayerOffhandItem(player, offHandItem);
+            if (offHandItem.amount - requiredItem.amount <= 0) {
+              setPlayerOffhandItem(player, undefined);
+            } else {
+              offHandItem.amount -= requiredItem.amount;
+              setPlayerOffhandItem(player, offHandItem);
+            }
           }
           success(requiredItem.itemId);
           return;
