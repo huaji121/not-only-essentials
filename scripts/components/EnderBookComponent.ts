@@ -47,8 +47,8 @@ export class EnderBookComponent implements ItemCustomComponent {
     let form = new ActionFormData()
       .title("末影之书")
       .body(`当前位于${formatVector3(player.location)}`)
-      .button("在此建立路径点")
-      .button("路径点列表");
+      .button("在此建立路径点", "textures/gui/newgui/Realms.png")
+      .button("路径点列表", "textures/gui/newgui/Local.png");
     form.show(player).then((result) => {
       if (result.canceled) {
       } else {
