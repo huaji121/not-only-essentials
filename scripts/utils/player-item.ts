@@ -57,9 +57,9 @@ export function tryToSpendItem(
   if (!inventory) return;
 
   /**副手物品优先 */
-  for (let requiredItem of requiredItems) {
-    const offHandItem = getPlayerOffhandItem(player);
-    if (offHandItem !== undefined) {
+  const offHandItem = getPlayerOffhandItem(player);
+  if (offHandItem !== undefined) {
+    for (let requiredItem of requiredItems) {
       /**物品符合要求 */
       if (offHandItem.typeId === requiredItem.itemId) {
         if (gameMode === GameMode.Creative || offHandItem.amount >= requiredItem.amount) {
@@ -72,8 +72,8 @@ export function tryToSpendItem(
           success(requiredItem.itemId);
           return;
         }
+        /**不进行失败 去判断背包内 */
       }
-      /**不进行失败 去判断背包内 */
     }
   }
 
