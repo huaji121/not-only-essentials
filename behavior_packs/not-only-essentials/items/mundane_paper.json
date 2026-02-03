@@ -3,8 +3,7 @@
   "minecraft:item": {
     "description": {
       "menu_category": {
-        "category": "equipment",
-        "group": "minecraft:itemGroup.name.miscFood"
+        "category": "items"
       },
       "identifier": "noe:mundane_paper"
     },
