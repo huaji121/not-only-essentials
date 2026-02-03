@@ -3,7 +3,8 @@
   "minecraft:item": {
     "description": {
       "menu_category": {
-        "category": "items"
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.miscFood"
       },
       "identifier": "noe:caramel_toast"
     },
