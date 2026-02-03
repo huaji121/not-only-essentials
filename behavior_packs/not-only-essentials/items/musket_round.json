@@ -20,6 +20,8 @@
         "value": "title.noe:musket_round.name"
       },
 
+      "minecraft:allow_off_hand": true,
+
       "minecraft:projectile": {
         "projectile_entity": "noe:musket_round"
       }
