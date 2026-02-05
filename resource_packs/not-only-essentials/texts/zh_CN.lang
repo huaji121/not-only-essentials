@@ -1,26 +1,26 @@
-title.noe:ender_apple.name=§5末影苹果
+title.noe:ender_apple.name=§5末影苹果§r
 
 title.noe:ender_dust.name=末影粉
 
-title.noe:ender_scroll.name=§5末影卷轴
-title.noe:ender_scroll_unused.name=§s未使用的末影卷轴
+title.noe:ender_scroll.name=§5末影卷轴§r
+title.noe:ender_scroll_unused.name=§s未使用的末影卷轴§r
 
-title.noe:ender_book.name=§5末影之书
+title.noe:ender_book.name=§5末影之书§r
 
 title.noe:mundane_paper.name=平凡的纸
 
 title.noe:goo.name=奇怪的粘液
 
-title.noe:musket.name=§6火枪
-title.noe:musket_round.name=§9火枪弹
+title.noe:musket.name=§6火枪§r
+title.noe:musket_round.name=§9火枪弹§r
 
 entity.noe:musket_round.name=火枪弹
 
 title.noe:black_powder.name=黑火药
 
-title.noe:cactus_sword.name=§9仙人掌剑
+title.noe:cactus_sword.name=§9仙人掌剑§r
 
-title.noe:advanced_leather.name=§8强化皮革
+title.noe:advanced_leather.name=§8强化皮革§r
 
 title.noe:caramel_toast.name=焦糖面包
 
