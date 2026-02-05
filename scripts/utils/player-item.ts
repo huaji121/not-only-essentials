@@ -128,15 +128,11 @@ export function consumeMultiple(player: Player, entries: RequiredItemEntry[]): s
       }
     }
 
-    /* ---------- 3️⃣ 背包 clear（255 分段） ---------- */
-    while (remaining > 0) {
-      const remove = Math.min(remaining, 255);
-      system.run(() => {
-        player.runCommand(`clear @s ${id} 0 ${remove}`);
-      });
+    // /* ---------- 3️⃣ 背包 clear ---------- */
 
-      remaining -= remove;
-    }
+    system.run(() => {
+      player.runCommand(`clear @s ${id} 0 ${remaining}`);
+    });
 
     return id;
   }

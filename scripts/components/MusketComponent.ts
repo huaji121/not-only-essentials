@@ -44,10 +44,7 @@ export class MusketComponent implements ItemCustomComponent {
     //   }
     // );
 
-    const selectedItem = consumeMultiple(player, [
-      { id: MOD_ID.of("musket_round"), amount: 1 },
-      { id: MinecraftItemTypes.Arrow, amount: 65 },
-    ]);
+    const selectedItem = consumeMultiple(player, [{ id: MOD_ID.of("musket_round"), amount: 1 }]);
     if (selectedItem !== undefined) {
       /**success */
       const projectile = player.dimension.spawnEntity(

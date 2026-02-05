@@ -136,7 +136,7 @@ export class EnderBookComponent implements ItemCustomComponent {
                         player.dimension.playSound("beacon.deactivate", player.location);
                       }, 1);
                     } else {
-                      player.sendMessage(`§a需要§e${requiredAmount}§r个§e末影粉§r`);
+                      player.sendMessage(`§a需要§e${requiredAmount}§r§a个§e末影粉§r`);
                     }
 
                     break;
