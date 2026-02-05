@@ -1,23 +1,12 @@
-import {
-  DimensionTypes,
-  EntityComponent,
-  EntityComponentTypes,
-  ItemComponentUseEvent,
-  ItemCustomComponent,
-  ItemStack,
-  Player,
-  system,
-  Vector3,
-  world,
-} from "@minecraft/server";
+import { ItemComponentUseEvent, ItemCustomComponent, Player, system, Vector3, world } from "@minecraft/server";
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
 import { DynamicJson } from "../utils/DynamicJson";
 import { MOD_ID } from "../ModID";
 import { Vector3Utils } from "@minecraft/math";
 import {
-  getPlayerOnHandItem,
+  consumeMultiple,
+  getPlayerMainHandItem,
   setPlayerMainHandItem,
-  tryToSpendItem,
   updatePlayerOnHandItemDynamicJson,
 } from "../utils/player-item";
 import { formatDimension, formatVector3 } from "../utils/formater";
@@ -42,7 +31,7 @@ export class EnderBookComponent implements ItemCustomComponent {
 
   onUse(event: ItemComponentUseEvent) {
     const player = event.source;
-    if (!getPlayerOnHandItem(player)) return;
+    if (!getPlayerMainHandItem(player)) return;
 
     let form = new ActionFormData()
       .title("末影之书")
@@ -61,7 +50,7 @@ export class EnderBookComponent implements ItemCustomComponent {
             createPointForm.show(player).then((result) => {
               if (result.formValues) {
                 const name = result.formValues[0] as string;
-                const currentOnHandItem = getPlayerOnHandItem(player);
+                const currentOnHandItem = getPlayerMainHandItem(player);
                 if (!currentOnHandItem) return;
                 let itemPointTableJson = new DynamicJson(currentOnHandItem, "POINT_TABLE");
                 if (itemPointTableJson.get() === undefined) {
@@ -98,7 +87,7 @@ export class EnderBookComponent implements ItemCustomComponent {
             });
             break;
           case 1 /**路径点列表 */:
-            const currentOnHandItem = getPlayerOnHandItem(player);
+            const currentOnHandItem = getPlayerMainHandItem(player);
             if (!currentOnHandItem) return;
             let itemPointTableJson = new DynamicJson<any>(currentOnHandItem, "POINT_TABLE");
             /**处理初始状态 */
@@ -137,20 +126,19 @@ export class EnderBookComponent implements ItemCustomComponent {
                 if (result.selection === undefined) return;
                 switch (result.selection) {
                   case 0 /**传送 */:
-                    tryToSpendItem(
-                      player,
-                      [{ itemId: MOD_ID.of("ender_dust"), amount: requiredAmount }],
-                      () => /**failed */ {
-                        player.sendMessage(`§a需要${requiredAmount}个§e末影粉`);
-                      },
-                      () => /**successful */ {
-                        player.teleport(position.pos, { dimension: world.getDimension(position.dim) });
-                        player.sendMessage(`§a已传送到路径点§e${nameKey}`);
-                        system.runTimeout(() => {
-                          player.dimension.playSound("beacon.deactivate", player.location);
-                        }, requiredAmount);
-                      }
-                    );
+                    const selectedItem = consumeMultiple(player, [
+                      { id: MOD_ID.of("ender_dust"), amount: requiredAmount },
+                    ]);
+                    if (selectedItem !== undefined) {
+                      player.teleport(position.pos, { dimension: world.getDimension(position.dim) });
+                      player.sendMessage(`§a已传送到路径点§e${nameKey}`);
+                      system.runTimeout(() => {
+                        player.dimension.playSound("beacon.deactivate", player.location);
+                      }, 1);
+                    } else {
+                      player.sendMessage(`§a需要${requiredAmount}个§e末影粉`);
+                    }
+
                     break;
 
                   case 1 /**修改 */:

@@ -11,7 +11,7 @@ import {
 import { MOD_ID } from "../ModID";
 import { Vector3Utils } from "@minecraft/math";
 import { MinecraftItemTypes } from "@minecraft/vanilla-data";
-import { tryToSpendItem } from "../utils/player-item";
+import { consumeMultiple } from "../utils/player-item";
 
 export class MusketComponent implements ItemCustomComponent {
   static readonly PROJECTILE_VELOCITY_SCALE = 5;
@@ -21,27 +21,52 @@ export class MusketComponent implements ItemCustomComponent {
     const player = event.source;
     const playerView = player.getViewDirection();
 
-    tryToSpendItem(
-      player,
-      [
-        { itemId: MOD_ID.of("musket_round"), amount: 1 },
-        // { itemId: MinecraftItemTypes.Arrow, amount: 1 },
-      ],
-      () => /**failed */ {
-        player.dimension.playSound("block.itemframe.break", player.location);
-      },
-      (item) => /**successful */ {
-        const projectile = player.dimension.spawnEntity(item as VanillaEntityIdentifier, player.getHeadLocation(), {});
-        const projectileComponent = projectile.getComponent(EntityComponentTypes.Projectile);
+    // tryToSpendItem(
+    //   player,
+    //   [
+    //     { typeId: MOD_ID.of("musket_round"), amount: 1 },
+    //     // { itemId: MinecraftItemTypes.Arrow, amount: 1 },
+    //   ],
+    //   () => /**failed */ {
+    //     player.dimension.playSound("block.itemframe.break", player.location);
+    //   },
+    //   (item) => /**successful */ {
+    //     const projectile = player.dimension.spawnEntity(item as VanillaEntityIdentifier, player.getHeadLocation(), {});
+    //     const projectileComponent = projectile.getComponent(EntityComponentTypes.Projectile);
 
-        if (projectileComponent) {
-          projectileComponent.owner = player;
+    //     if (projectileComponent) {
+    //       projectileComponent.owner = player;
 
-          projectileComponent.shoot(Vector3Utils.scale(playerView, MusketComponent.PROJECTILE_VELOCITY_SCALE));
-          player.dimension.playSound("cauldron.explode", player.location);
-          player.dimension.spawnParticle("minecraft:cauldron_explosion_emitter", player.getHeadLocation());
-        }
+    //       projectileComponent.shoot(Vector3Utils.scale(playerView, MusketComponent.PROJECTILE_VELOCITY_SCALE));
+    //       player.dimension.playSound("cauldron.explode", player.location);
+    //       player.dimension.spawnParticle("minecraft:cauldron_explosion_emitter", player.getHeadLocation());
+    //     }
+    //   }
+    // );
+
+    const selectedItem = consumeMultiple(player, [
+      { id: MOD_ID.of("musket_round"), amount: 1 },
+      { id: MinecraftItemTypes.Arrow, amount: 65 },
+    ]);
+    if (selectedItem !== undefined) {
+      /**success */
+      const projectile = player.dimension.spawnEntity(
+        selectedItem as VanillaEntityIdentifier,
+        player.getHeadLocation(),
+        {}
+      );
+      const projectileComponent = projectile.getComponent(EntityComponentTypes.Projectile);
+
+      if (projectileComponent) {
+        projectileComponent.owner = player;
+
+        projectileComponent.shoot(Vector3Utils.scale(playerView, MusketComponent.PROJECTILE_VELOCITY_SCALE));
+        player.dimension.playSound("cauldron.explode", player.location);
+        player.dimension.spawnParticle("minecraft:cauldron_explosion_emitter", player.getHeadLocation());
       }
-    );
+    } else {
+      /**failed */
+      player.dimension.playSound("block.itemframe.break", player.location);
+    }
   }
 }
