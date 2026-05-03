@@ -1,7 +1,7 @@
 import { CommandPermissionLevel, CustomCommandParamType, CustomCommandStatus, system, world } from "@minecraft/server";
-import { MOD_ID } from "./ModID";
-import { playerEnteredServerJson } from "./player-entered-server";
-import { getPlayerOnlineTimeKey } from "./online-time";
+import { playerEnteredServerJson } from "../player-entered-server";
+import { getPlayerOnlineTimeKey } from "../online-time";
+import { MOD_ID } from "../utils/ModID";
 
 enum RankEnum {
   onlineTime = "onlineTime",

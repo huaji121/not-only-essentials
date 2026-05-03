@@ -1,5 +1,5 @@
 import { DisplaySlotId, ScoreboardObjective, system, world } from "@minecraft/server";
-import { MOD_ID } from "./ModID";
+import { MOD_ID } from "./utils/ModID";
 
 export let ONLINE_TIME_SURFFIX = "online_time";
 export let ONLINE_TIME_DISPLAY_ID = MOD_ID.of("online_time_display");

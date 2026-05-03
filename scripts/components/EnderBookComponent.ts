@@ -1,7 +1,7 @@
 import { ItemComponentUseEvent, ItemCustomComponent, Player, system, Vector3, world } from "@minecraft/server";
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
 import { DynamicJson } from "../utils/DynamicJson";
-import { MOD_ID } from "../ModID";
+import { MOD_ID } from "../utils/ModID";
 import { Vector3Utils } from "@minecraft/math";
 import {
   consumeMultiple,

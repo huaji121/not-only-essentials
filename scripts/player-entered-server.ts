@@ -1,6 +1,6 @@
 import { world } from "@minecraft/server";
 import { DynamicJson } from "./utils/DynamicJson";
-import { MOD_ID } from "./ModID";
+import { MOD_ID } from "./utils/ModID";
 
 export let playerEnteredServerJson: DynamicJson<string[]>;
 

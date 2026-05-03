@@ -1,5 +1,5 @@
 import { system } from "@minecraft/server";
-import { MOD_ID } from "./ModID";
+import { MOD_ID } from "./utils/ModID";
 
 system.beforeEvents.startup.subscribe(() => {
   console.log(`INFO:成功加载了${MOD_ID.id}!`);

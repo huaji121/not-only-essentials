@@ -8,7 +8,7 @@ import {
   VanillaEntityIdentifier,
   world,
 } from "@minecraft/server";
-import { MOD_ID } from "../ModID";
+import { MOD_ID } from "../utils/ModID";
 import { Vector3Utils } from "@minecraft/math";
 import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { consumeMultiple } from "../utils/player-item";

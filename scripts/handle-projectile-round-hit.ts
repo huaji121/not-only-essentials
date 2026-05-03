@@ -1,5 +1,5 @@
 import { EntityApplyDamageByProjectileOptions, EntityComponent, EntityComponentTypes, world } from "@minecraft/server";
-import { MOD_ID } from "./ModID";
+import { MOD_ID } from "./utils/ModID";
 import { MusketComponent } from "./components/MusketComponent";
 
 /**施加伤害 */
