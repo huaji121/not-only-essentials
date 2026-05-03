@@ -25,6 +25,8 @@
         "**/node_modules": true
     },
     "cSpell.words": [
+        "enablemcloopback",
+        "enablemcpreviewloopback",
         "gametest",
         "gametests",
         "mcaddon",

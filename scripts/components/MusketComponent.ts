@@ -15,36 +15,13 @@ import { consumeMultiple } from "../utils/player-item";
 
 export class MusketComponent implements ItemCustomComponent {
   static readonly PROJECTILE_VELOCITY_SCALE = 5;
-  static readonly PROJECTILE_DANEMR = 30;
+  static readonly PROJECTILE_DAMAGE = 30;
 
   onUse(event: ItemComponentUseEvent): void {
     const player = event.source;
     const playerView = player.getViewDirection();
-
-    // tryToSpendItem(
-    //   player,
-    //   [
-    //     { typeId: MOD_ID.of("musket_round"), amount: 1 },
-    //     // { itemId: MinecraftItemTypes.Arrow, amount: 1 },
-    //   ],
-    //   () => /**failed */ {
-    //     player.dimension.playSound("block.itemframe.break", player.location);
-    //   },
-    //   (item) => /**successful */ {
-    //     const projectile = player.dimension.spawnEntity(item as VanillaEntityIdentifier, player.getHeadLocation(), {});
-    //     const projectileComponent = projectile.getComponent(EntityComponentTypes.Projectile);
-
-    //     if (projectileComponent) {
-    //       projectileComponent.owner = player;
-
-    //       projectileComponent.shoot(Vector3Utils.scale(playerView, MusketComponent.PROJECTILE_VELOCITY_SCALE));
-    //       player.dimension.playSound("cauldron.explode", player.location);
-    //       player.dimension.spawnParticle("minecraft:cauldron_explosion_emitter", player.getHeadLocation());
-    //     }
-    //   }
-    // );
-
     const selectedItem = consumeMultiple(player, [{ id: MOD_ID.of("musket_round"), amount: 1 }]);
+
     if (selectedItem !== undefined) {
       /**success */
       const projectile = player.dimension.spawnEntity(
@@ -58,7 +35,7 @@ export class MusketComponent implements ItemCustomComponent {
         projectileComponent.owner = player;
 
         projectileComponent.shoot(Vector3Utils.scale(playerView, MusketComponent.PROJECTILE_VELOCITY_SCALE));
-        player.dimension.playSound("cauldron.explode", player.location);
+        player.dimension.playSound("random.explode", player.location);
         player.dimension.spawnParticle("minecraft:cauldron_explosion_emitter", player.getHeadLocation());
       }
     } else {

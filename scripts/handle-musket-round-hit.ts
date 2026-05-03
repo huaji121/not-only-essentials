@@ -12,7 +12,7 @@ world.afterEvents.projectileHitEntity.subscribe((event) => {
   switch (projectile.typeId) {
     case MOD_ID.of("musket_round"):
       const damager = projectile.getComponent(EntityComponentTypes.Projectile)?.owner;
-      event.getEntityHit().entity?.applyDamage(MusketComponent.PROJECTILE_DANEMR, {
+      event.getEntityHit().entity?.applyDamage(MusketComponent.PROJECTILE_DAMAGE, {
         damagingEntity: damager,
         damagingProjectile: event.projectile,
       } satisfies EntityApplyDamageByProjectileOptions);

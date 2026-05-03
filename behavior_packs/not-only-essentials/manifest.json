@@ -5,7 +5,7 @@
     "description": "基础++ 向游戏内添加了非常多有趣的新东西。\ngithub页面:https://github.com/huaji121/not-only-essentials",
     "uuid": "019bb512-0be5-4f0d-9594-87f9f22e60ee",
     "version": [1, 1, 0],
-    "min_engine_version": [1, 20, 30]
+    "min_engine_version": [1, 26, 10]
   },
   "modules": [
     {
@@ -20,7 +20,7 @@
   "dependencies": [
     {
       "module_name": "@minecraft/server",
-      "version": "2.5.0-beta"
+      "version": "2.7.0-beta"
     },
     {
       "module_name": "@minecraft/server-ui",
