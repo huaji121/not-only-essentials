@@ -28,8 +28,12 @@ export class MusketComponent implements ItemCustomComponent {
 
       if (projectileComponent) {
         projectileComponent.owner = player;
+        const rotation = player.getRotation();
 
         projectileComponent.shoot(Vector3Utils.scale(playerView, MusketComponent.PROJECTILE_VELOCITY_SCALE));
+
+        player.teleport(player.location, { rotation: { x: rotation.x - 20, y: rotation.y } });
+
         player.dimension.playSound("random.explode", player.location);
         player.dimension.spawnParticle("minecraft:cauldron_explosion_emitter", player.getHeadLocation());
       }
