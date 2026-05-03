@@ -1,16 +1,11 @@
 import {
-  CustomComponentParameters,
   EntityComponentTypes,
-  GameMode,
   ItemComponentUseEvent,
   ItemCustomComponent,
-  ItemStack,
   VanillaEntityIdentifier,
-  world,
 } from "@minecraft/server";
 import { MOD_ID } from "../utils/ModID";
 import { Vector3Utils } from "@minecraft/math";
-import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { consumeMultiple } from "../utils/player-item";
 
 export class MusketComponent implements ItemCustomComponent {

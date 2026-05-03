@@ -29,6 +29,7 @@
         "enablemcpreviewloopback",
         "gametest",
         "gametests",
+        "itemframe",
         "mcaddon",
         "minecart",
         "shulker",

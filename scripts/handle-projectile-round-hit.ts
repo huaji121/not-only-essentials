@@ -1,4 +1,4 @@
-import { EntityApplyDamageByProjectileOptions, EntityComponent, EntityComponentTypes, world } from "@minecraft/server";
+import { EntityApplyDamageByProjectileOptions, EntityComponentTypes, world } from "@minecraft/server";
 import { MOD_ID } from "./utils/ModID";
 import { MusketComponent } from "./components/MusketComponent";
 
